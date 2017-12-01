@@ -22,7 +22,7 @@ class TelegramController extends Controller
 
         $user = $message->getFrom();
 
-        $users->store(
+        $user = $users->store(
             $user->getId() ?? '',
             $user->getFirstName() ?? '',
             $user->getLastName() ?? '',
