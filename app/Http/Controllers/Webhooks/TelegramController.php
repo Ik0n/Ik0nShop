@@ -32,17 +32,24 @@ class TelegramController extends Controller
         $messages->store($user, $message->getMessageId(), $message->getText() ?? '');
 
         if($message->getText() == "/start") {
+            $keyboard = [
+                [
+                    ['slish']
+                ],
+                [
+                    ['tobi'], ['pizda']
+                ]
+            ];
+
           Telegram::bot()->sendMessage([
               'chat_id' => $user->telegram_id,
-              'text' => "Ебать работаит"
+              'text' => "Ебать работаит",
+              'reply_markup' => Telegram\Bot\Keyboard\Keyboard::make([
+                 'keyboard' => $keyboard,
+                 'resize_keyboard' => true,
+                 'one_time_keyboard' => true
+              ]),
           ]);
-        }
-
-        if (true) {
-            Telegram::bot()->sendMessage([
-                'chat_id' => $user->telegram_id,
-                'text' => "ПИЗДИШЬ НА МАЛО"
-            ]);
         }
     }
 }
