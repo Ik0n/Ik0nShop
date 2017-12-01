@@ -13,14 +13,12 @@ use App\Entities\User;
 class UserRepository extends AbstractRepository
 {
 
-    private $user;
-
     public function __construct(User $user)
     {
         parent::__construct($user);
     }
 
-    public function store(integer $id, string $firstName, string $lastName, string $userName) : User {
+    public function store(int $id, string $firstName, string $lastName, string $userName) : User {
 
         $values = [
             'telegram_id' => $id,
