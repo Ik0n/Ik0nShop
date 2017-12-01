@@ -17,4 +17,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/webhooks/telegram'.env('TELEGRAM_BOT_TOKEN'), 'Webhooks\TelegramController@process');
