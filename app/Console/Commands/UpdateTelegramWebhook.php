@@ -8,9 +8,10 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
 use Telegram;
 
-class UpdateTelegramWebhook
+class UpdateTelegramWebhook extends Command
 {
     protected $signature = 'telegram:webhook:update';
     protected $description = 'Обновить данные webhook';
