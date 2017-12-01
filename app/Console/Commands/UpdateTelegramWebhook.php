@@ -22,5 +22,12 @@ class UpdateTelegramWebhook extends Command
         $result = Telegram::bot()->setWebhook([
             'url' => $url
         ]);
+
+        if (!$result->getResult()) {
+            $this->error('Webhook установить не удалось ' . $result->getDecodedBody()['description']);
+            return;
+        }
+
+        $this->info('Webhook был успешно установлен');
     }
 }
