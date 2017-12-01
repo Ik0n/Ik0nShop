@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\MessageRepository;
 use App\Repositories\UserRepository;
 use Telegram;
+use Telegram\Bot\Keyboard\Keyboard;
 
 class TelegramController extends Controller
 {
@@ -32,19 +33,12 @@ class TelegramController extends Controller
         $messages->store($user, $message->getMessageId(), $message->getText() ?? '');
 
         if($message->getText() == "/start") {
-            $keyboard = [
-                [
-                    ['slish']
-                ],
-                [
-                    ['tobi'], ['pizda']
-                ]
-            ];
+            $keyboard = [['slish'], ['tobi'], ['pizda']];
 
           Telegram::bot()->sendMessage([
               'chat_id' => $user->telegram_id,
               'text' => "Ебать работаит",
-              'reply_markup' => Telegram\Bot\Keyboard\Keyboard::make([
+              'reply_markup' => Keyboard::make([
                  'keyboard' => $keyboard,
                  'resize_keyboard' => true,
                  'one_time_keyboard' => true
