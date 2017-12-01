@@ -33,7 +33,7 @@ class TelegramController extends Controller
 
         if($message->getText() == "/start") {
           Telegram::bot()->sendMessage([
-              'chat_id' => $user->id,
+              'chat_id' => $user->telegram_id,
               'text' => "Ебать работаит"
           ]);
         }
