@@ -13,7 +13,9 @@ class Message extends AbstractEntity
 {
 
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'external_id',
+        'text',
     ];
 
 }
