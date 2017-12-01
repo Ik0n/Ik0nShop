@@ -30,5 +30,12 @@ class TelegramController extends Controller
         );
 
         $messages->store($user, $message->getMessageId(), $message->getText() ?? '');
+
+        if($message->getText() == "/start") {
+          Telegram::bot()->sendMessage([
+              'chat_id' => $user->id,
+              'text' => "Ебать работаит"
+          ]);
+        }
     }
 }
