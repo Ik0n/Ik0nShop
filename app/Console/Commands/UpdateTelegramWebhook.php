@@ -8,6 +8,8 @@
 
 namespace App\Console\Commands;
 
+use Telegram;
+
 class UpdateTelegramWebhook
 {
     protected $signature = 'telegram:webhook:update';
@@ -16,9 +18,8 @@ class UpdateTelegramWebhook
     public function handle() {
 
         $url = str_replace('http://', 'https://', route('telegram.webhook'));
-
-        \Telegram::bot()->setWebhook([
-
+        $result = Telegram::bot()->setWebhook([
+            'url' => $url
         ]);
     }
 }
