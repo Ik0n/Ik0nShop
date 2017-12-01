@@ -37,5 +37,12 @@ class TelegramController extends Controller
               'text' => "Ебать работаит"
           ]);
         }
+
+        if (true) {
+            Telegram::bot()->sendMessage([
+                'chat_id' => $user->telegram_id,
+                'text' => "ПИЗДИШЬ НА МАЛО"
+            ]);
+        }
     }
 }
