@@ -22,11 +22,13 @@ class UserRepository extends AbstractRepository
 
     public function store(integer $id, string $firstName, string $lastName, string $userName) : User {
 
-        return $this->entity->create([
-           'telegram_id' => $id,
-           'first_name' => $firstName,
-           'last_name' => $lastName,
-           'username' => $userName
-        ]);
+        $values = [
+            'telegram_id' => $id,
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'username' => $userName
+        ];
+
+        return $this->entity->firstOrCreate(['telegram_id' => $id], $values);
     }
 }
