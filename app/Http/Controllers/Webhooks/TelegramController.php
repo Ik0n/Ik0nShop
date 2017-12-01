@@ -12,11 +12,17 @@ use App\Http\Controllers\Controller;
 use App\Repositories\MessageRepository;
 use App\Repositories\UserRepository;
 use Telegram;
+use Log;
 
 class TelegramController extends Controller
 {
     public function process(UserRepository $users, MessageRepository $messages) {
         $update = Telegram::bot()->getWebhookUpdate();
+
+
+        Log::debug('Telegram.process', [
+            'update' => $update
+        ]);
 
         $message = $update->getMessage();
 

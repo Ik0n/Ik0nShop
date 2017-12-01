@@ -20,7 +20,7 @@ class MessageRepository extends AbstractRepository {
         parent::__construct($entity);
     }
 
-    public function store(User $user, int $externalId, string $text) : Message{
+    public function store(User $user, int $externalId, string $text) : Message {
 
         return $this->entity->create([
             'user_id' => $user->id,
